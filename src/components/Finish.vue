@@ -2,49 +2,20 @@
   <div class="wrapper">
     <div class="container--form">
       <div class="row">
-        <div class="col--6 font-size-13">
-        <router-link to="/">
-          <font-awesome-icon icon="arrow-left" /> &nbsp; &nbsp;Back to delivery
-        </router-link>
-        </div>
         <div class="col--4">
           <div class="row">
-            <div class="col--6 padding-top-15">
-              <h2 class="primary__color">Shipment</h2>
-            </div>
             <div class="col--6">
               <div class="row">
                 <div class="col--6 padding-top-15 padding-right-15">
-                  <div class="box-select">
-                    <span>GO-SEND</span>
-                    <span>15,000</span>
+                  <div class="offset--page">
+                  <h2 class="primary__color padding-top-15">Thank You</h2>
+                  <p class="padding-top-15 font-size-13"><b>Order ID: XXKYB</b></p>
+                  <p class="padding-top-15 font-size-13">Your order will be delivered with GO-SEND</p>
+                  <div class="padding-top-15 font-size-13">
+                    <router-link to="/">
+                      <font-awesome-icon icon="arrow-left" /> &nbsp; &nbsp;Go to Homepage
+                    </router-link>
                   </div>
-                  <div class="box-select">
-                    <span>JNE</span>
-                    <span>9,000</span>
-                  </div>
-                  <div class="box-select">
-                    <span>Personal Courier</span>
-                    <span>29,000</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col--6 padding-top-15">
-              <h2 class="primary__color">Payment</h2>
-            </div>
-            <div class="col--6">
-              <div class="row">
-                <div class="col--6 padding-top-15 padding-right-15">
-                  <div class="box-select">
-                    <span>e-Wallet</span>
-                    <span>1,500,000 left</span>
-                  </div>
-                  <div class="box-select">
-                    <span>Bank Transfer</span>
-                  </div>
-                  <div class="box-select">
-                    <span>Virtual Account</span>
                   </div>
                 </div>
               </div>
@@ -82,11 +53,6 @@
                 </div>
                 <div class="col--3 right padding-top-15">
                   <h2 class="primary__color">505,900</h2>
-                </div>
-                <div class="col--6 padding-top-15">
-                  <router-link to="/finish">
-                    <button class="btn__payment">Pay with e-Wallet</button>
-                  </router-link>
                 </div>
               </div>
             </div>
@@ -217,7 +183,7 @@ export default {
     height: 150px
 
   .margin-top-100
-    margin-top: 120px
+    margin-top: 200px
 
   .box-select
     width: 200px
@@ -232,4 +198,7 @@ export default {
   .box-select span
     display: block
     padding-top: 5px
+
+  .offset--page
+    padding: 100px 200px 100px 200px
 </style>
