@@ -9,7 +9,7 @@
                 <div class="col--6 padding-top-15 padding-right-15">
                   <div class="offset--page">
                   <h2 class="primary__color padding-top-15">Thank You</h2>
-                  <p class="padding-top-15 font-size-13"><b>Order ID: XXKYB</b></p>
+                  <p class="padding-top-15 font-size-13"><b>Order ID: <span id="randomNumber"></span></b></p>
                   <p class="padding-top-15 font-size-13">Your order will be delivered with GO-SEND</p>
                   <div class="padding-top-15 font-size-13">
                     <router-link to="/">
@@ -66,12 +66,27 @@
 <script>
 import { required, minLength } from 'vuelidate/lib/validators'
 
+let randomNumber
+
 export default {
   name: 'PaymentDetail',
   data () {
     return {
       email: ''
     }
+  },
+  methods: {
+    getRandom: function (length, chars) {
+      let result = ''
+      for (let i = length; i > 0; --i) { result += chars[Math.floor(Math.random() * chars.length)] }
+      return result
+    }
+  },
+  created: function () {
+    randomNumber = this.getRandom(5, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ')
+  },
+  mounted () {
+    document.querySelector('#randomNumber').append(randomNumber)
   },
   validations: {
     email: {

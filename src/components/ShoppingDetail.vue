@@ -11,7 +11,7 @@
               <h2 class="primary__color">Delivery details</h2>
             </div>
             <div class="col--3 padding-top-15 right padding-right-15 font-size-13">
-              <input type="checkbox"> Send as Dropshipper
+              <input type="checkbox" checked> Send as Dropshipper
             </div>
             <div class="col--6">
               <div class="row">
@@ -19,24 +19,29 @@
                   <div class="form-group" >
                     <input type="text" id="email" name="email" v-model.trim.lazy="$v.email.$model" :class="{ 'form-control--error': $v.email.$error }" class="form--control" required>
                     <label class="form-control-placeholder" :class="{ 'form-control-placeholder--error': $v.email.$error }" for="email">Email</label>
+                    <div class="error" v-if="$v.email.$error"><font-awesome-icon icon="times" /></div>
                   </div>
                   <div class="form-group">
-                    <input type="text" id="number" class="form--control" v-model.trim.lazy="$v.number.$model" name="number" required>
+                    <input type="text" id="number" class="form--control" :class="{ 'form-control--error': $v.number.$error }" v-model.trim.lazy="$v.number.$model" name="number" required>
                     <label class="form-control-placeholder" :class="{ 'form-control-placeholder--error': $v.number.$error }" for="number">Number</label>
+                    <div class="error" v-if="$v.number.$error"><font-awesome-icon icon="times" /></div>
                   </div>
                   <div class="form-group">
                     <textarea class="form--control height-100" v-model.trim.lazy="$v.address.$model" :class="{ 'form-control--error': $v.address.$error }"  id="address" name="address" required></textarea>
                     <label class="form-control-placeholder" :class="{ 'form-control-placeholder--error': $v.address.$error }" for="address">Delivery Address</label>
+                    <div class="error" v-if="$v.address.$error"><font-awesome-icon icon="times" /></div>
                   </div>
                 </div>
                 <div class="col--3 padding-top-15 padding-right-15">
                   <div class="form-group">
                     <input type="text" class="form--control" v-model.trim.lazy="$v.dropshipper_name.$model" :class="{ 'form-control--error': $v.dropshipper_name.$error }" id="dropshipper_name" name="dropshipper_name" required>
                     <label class="form-control-placeholder" :class="{ 'form-control-placeholder--error': $v.dropshipper_name.$error }" for="dropshipper_name">Dropshipper Name</label>
+                    <div class="error" v-if="$v.dropshipper_name.$error"><font-awesome-icon icon="times" /></div>
                   </div>
                   <div class="form-group">
                     <input type="text" class="form--control" v-model.trim.lazy="$v.dropshipper_phone.$model" :class="{ 'form-control--error': $v.dropshipper_phone.$error }" id="dropshipper_phone" name="dropshipper_phone" required>
                     <label class="form-control-placeholder" :class="{ 'form-control-placeholder--error': $v.dropshipper_phone.$error }" for="dropshipper_phone">Dropshipper Name</label>
+                    <div class="error" v-if="$v.dropshipper_phone.$error"><font-awesome-icon icon="times" /></div>
                   </div>
                 </div>
               </div>
@@ -84,7 +89,7 @@
 </template>
 
 <script>
-import { required, minLength } from 'vuelidate/lib/validators'
+import { required, minLength, maxLength, email } from 'vuelidate/lib/validators'
 
 export default {
   name: 'ShoppingDetail',
@@ -96,15 +101,17 @@ export default {
   validations: {
     email: {
       required,
+      email,
       minLength: minLength(4)
     },
     number: {
       required,
-      minLength: minLength(4)
+      minLength: minLength(6),
+      maxLength: maxLength(20)
     },
     address: {
       required,
-      minLength: minLength(4)
+      maxLength: maxLength(120)
     },
     dropshipper_name: {
       required,
@@ -181,6 +188,12 @@ export default {
   .form-group{
     position: relative
   }
+
+  .form-group svg
+    position: absolute
+    top: 15px
+    right: 15px
+    color: #FF8A00
 
   .form-control-placeholder{
     position: absolute
